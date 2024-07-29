@@ -67,7 +67,7 @@ router.delete('/:id',async(req,res)=>{
     try{
         const menuId=req.params.id; //extract id from the url
 
-        const response= await MenuItem.findByIdAndDelete(menuId);
+        const response= MenuItem.findByIdAndDelete(menuId);
         if(!response){
             return res.status(404).json({error: 'item not found'});
         }
@@ -81,5 +81,4 @@ router.delete('/:id',async(req,res)=>{
 
     }
 })
-
 export default router;

@@ -11,8 +11,13 @@ const app = express();
 const PORT=process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+//middleware function
+const logRequest=(req,res,next)=>{
+    console.log(`[${new Date().toLocaleString()}]request made to: ${req.orignialUrl}`);
+    next();// move to the next phase
+};
 
-app.get('/', (req, res) => {
+app.get('/',logRequest, (req, res) => {
     res.status(200).send({
         success: true,
         message: 'helloworld'
